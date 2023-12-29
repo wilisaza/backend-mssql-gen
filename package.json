@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server/server.js --exec babel-node"
+    "dev": "nodemon -r dotenv/config --exec babel-node ./src/server/server.js",
+    "start": "npm run build && node prod/server/server.js"
   },
+  "type":"module",
   "keywords": [],
   "author": "",
   "license": "ISC",

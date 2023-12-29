@@ -27,24 +27,15 @@ export const mssqlApi = {
     return executeFunctions.executeMssqlString(header,sql,{})
   },
 
-  async getFunction(nomFunction, params, header) {
-    const sql = sentences.functionString(nomFunction, params)
-    return executeFunctions.executeMssqlString(header,sql,{})
-  },
-
   async getCustomSelect(table, field, where, header) {
     const sql = functions.paginationString(sentences.customSelectString(table, field, where, resWords),connection, where)
     return executeFunctions.executeMssqlString(header,sql,{})
   },
 
   async executeQuery(data, header) {
-    const sql = data.query?? "SELECT 'No query' FROM dual"
+    const sql = data.query?? "SELECT 'No query' as error "
     const bind = data.bind?? {}
     return await executeFunctions.executeMssqlString(header,sql, bind)
-  },
-
-  async executeTransaction(table, data, header) {
-    return await executeFunctions.executeOrclTransaction(table, header, data)
   },
 
   async insertOne(table, data, header) {
@@ -60,12 +51,6 @@ export const mssqlApi = {
   async deleteFiltered(table, where, header) {
     const sql = sentences.deleteString(table, where)
     return executeFunctions.executeMssqlString(header,sql,{})
-  },
-
-  async postProcedure(nomProcedure, params, header) {
-    const sql = sentences.procedureString(nomProcedure, params)
-    const bindVars = sentences.procedureBind(params)
-    return executeFunctions.executeMssqlString(header,sql,bindVars)
   },
 
 }

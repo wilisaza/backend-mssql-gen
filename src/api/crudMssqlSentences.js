@@ -174,20 +174,6 @@ export const sentences = {
     return sqlString
   },
 
-  functionString(nomFunction, params) {
-    let sqlString = `SELECT ${nomFunction}(`
-    for (let colum in params) {
-      if (typeof params[colum] === 'string') {
-        sqlString += `${colum} => '${params[colum]}', `
-      } else {
-        sqlString += `${colum} => ${params[colum]}, `
-      }
-    }
-    sqlString += '*'
-    sqlString = sqlString.replace(', *', ') RESULT FROM DUAL')
-    return sqlString
-  },
-
   customSelectString(table, field, where, resWords) {
     let sqlString = 'SELECT '
     for (let colum in field) {
@@ -227,32 +213,6 @@ export const sentences = {
     }
     return sqlString
   },
-/*
-  procedureString(nomProcedure, params) {
-    let sqlString = `BEGIN ${nomProcedure}(`
-    for (let colum in params) {
-      sqlString += `:${colum} , `
-    }
-    sqlString += '*'
-    sqlString = sqlString.replace(', *', '); END;')
-    return sqlString
-  },
-
-  procedureBind(params) {
-    let bindVars = new Object
-    for (let colum in params) {
-      if (params[colum]=== 'VARCHAR2') {
-        bindVars[colum] = { dir : OracleDB.BIND_OUT, type: OracleDB.STRING }
-      }
-      else if (params[colum]=== 'NUMBER') {
-        bindVars[colum] = { dir : OracleDB.BIND_OUT, type: OracleDB.NUMBER }
-      }
-      else{
-        bindVars[colum] = `${params[colum]}`
-      }
-    }
-    return bindVars
-  },*/
-  
+ 
 }
 

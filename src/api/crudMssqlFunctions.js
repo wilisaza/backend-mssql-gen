@@ -74,7 +74,10 @@ export const functions = {
   },
 
   validateDbConn(dataConn, error){
-    let errorCount = 0
+    if (process.env.DBCONN)
+      return true
+    
+      let errorCount = 0
     if(!dataConn?.dbuser){
       error.push('No dbUser especified')
       errorCount++

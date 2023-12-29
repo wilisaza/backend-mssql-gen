@@ -14,13 +14,7 @@ router.get('/:object', mssqlCtrl.getAllObjects)
 
 router.post('/custom/:object', mssqlCtrl.postAllCustomObjects)
 
-router.post('/function/:nomFunction', mssqlCtrl.postFunctionObject)
-
-router.post('/procedure/:nomProcedure', mssqlCtrl.postProcedureObject)
-
 router.post('/query', mssqlCtrl.postQuery)
-
-router.post('/transaction', mssqlCtrl.postTransaction)
 
 router.post('/:object', mssqlCtrl.postObject)
 

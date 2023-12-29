@@ -1,9 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import {config} from 'dotenv'
 import { router } from '../routes/server.routes.js'
 
-config()
 const LISTEN_PORT = process.env.PORT || 8080
 // Declaración de constante de tipo express
 const app = express()

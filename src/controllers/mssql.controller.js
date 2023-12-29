@@ -68,20 +68,7 @@ export const mssqlCtrl= {
     let outData = await mssqlApi.executeQuery(req.body, req.headers)
     res.json(outData)
   },
-
-  postTransaction: async(req, res) => {
-    let connError=[]
-    if(!functions.validateDbConn(req.headers,connError)){
-      res.status(400).json({ success:false, error: connError })
-      return
-    }
-    let outData = {}
-    if (Array.isArray(req.body))
-      outData = await mssqlApi.executeTransaction('', req.body, req.headers)
-    
-    res.json(outData)
-  },
-
+  
   putObjects: async(req, res) => {
     let connError=[]
     if(!functions.validateDbConn(req.headers,connError)){
